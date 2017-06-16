@@ -96,6 +96,10 @@ func info(err error) {
 }
 
 func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, usage)
+	}
+
 	sourceDBURL := flag.String("source", "", "Source Postgres database URL. (Required)")
 	targetDBURL := flag.String("target", "", "Target Postgres database URL. (Required)")
 	tableArg := flag.String("table", "", "Table to transfer. (Required)")
